@@ -12,14 +12,14 @@ const Message = ({ lastMessage, message }) => {
         />
       )}
       {/* if its image render image, else render message */}
-      {message?.attachments?.length > 0} ? (
+      {/* {message?.attachments?.length > 0} ? (
       <img
         src={message.attachments[0].filename}
         alt="message-attachment"
         className="message-image"
         style={{ marginleft: userFirstMessage ? "4px" : "48px" }}
       />
-      ) : (
+      ) : ( */}
       <div
         className="message"
         style={{
@@ -31,7 +31,6 @@ const Message = ({ lastMessage, message }) => {
       >
         {message.text}
       </div>
-      )
     </div>
   );
 };
