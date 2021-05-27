@@ -4,7 +4,6 @@ import IncomingMessage from "./IncomingMessage";
 
 const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
-  console.log(chats);
   //if chat exists, and checks which chat you're actively looking at
   const chat = chats && chats[activeChat];
 
