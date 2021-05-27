@@ -4,8 +4,26 @@ import IncomingMessage from "./IncomingMessage";
 
 const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
+  console.log(userName);
   //if chat exists, and checks which chat you're actively looking at
   const chat = chats && chats[activeChat];
+
+  const renderReadReciepts = (message, isMyMessage) => {
+    //has person read the message
+    return chat.people.map(
+      (person, index) =>
+        person.last_read === message.id && (
+          <div
+            key={`read_${index}`}
+            className="read-reciept"
+            style={{
+              float: isMyMessage ? "right" : "left",
+              backgroundImage: `url(${person?.person?.avatar})`,
+            }}
+          />
+        )
+    );
+  };
 
   const renderMessages = () => {
     const keys = Object.keys(messages);
@@ -36,7 +54,7 @@ const ChatFeed = (props) => {
               marginLeft: isMyMessage ? "0px" : "68px",
             }}
           >
-            read-reciepts
+            {renderReadReciepts(message, isMyMessage)}
           </div>
         </div>
       );
